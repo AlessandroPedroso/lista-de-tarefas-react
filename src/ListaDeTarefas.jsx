@@ -1,8 +1,9 @@
 import { useState } from "react"
+import {Item, Container , TodoList , Input, Button, Ul} from './styles'
 
 function ListaDeTarefas(){
 
-    const [tasks, setTasks] = useState(['Entrar para o DevClub'])
+    const [tasks, setTasks] = useState([])
     const [inputValue, setInputValue] = useState('')
 
     const inputChange = event =>{
@@ -16,19 +17,21 @@ function ListaDeTarefas(){
     }
 
     return (
-        <div>
-            <input placeholder="Digite a sua tarefa" onChange={inputChange}/>
-            <button onClick={buttonClick}>Adicionar Tarefa</button>
+        <Container>
+            <TodoList>
+            <Input placeholder="Digite a sua tarefa!" onChange={inputChange}/>
+            <Button onClick={buttonClick}>Adicionar Tarefa</Button>
 
-            <ul>
+            <Ul>
                 {
-                    tasks.map(item =>(
+                    tasks.map((item,index) =>(
 
-                        <li>{item}</li>
+                        <Item key={index}>{item}</Item>
                     ))
                 }
-            </ul>
-        </div>
+            </Ul>
+            </TodoList>
+        </Container>
     )
 
 }
